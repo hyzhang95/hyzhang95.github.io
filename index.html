@@ -1,0 +1,236 @@
+---
+layout: default
+---
+
+<div class="home">
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Illinois State Building Analysis</h1>
+      <p class="lead">IS445 HW6: An interactive visualization of building inventory data</p>
+      <div class="cta-buttons">
+        <a href="https://raw.githubusercontent.com/UIUC-iSchool-DataViz/is445_data/main/building_inventory.csv" class="btn btn-primary">View Data</a>
+        <a href="https://github.com/your-username/your-repo/blob/main/notebooks/Workbook.ipynb" class="btn btn-secondary">View Jupyter Notebook</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="visualization-section">
+    <div class="container">
+      <h2>Building Distribution by Construction Decade</h2>
+      <div id="vis-1" class="visualization-container"></div>
+      <div class="analysis-content">
+        <h3>Visualization Description</h3>
+        <p>This visualization shows the distribution of Illinois state buildings across different construction decades, broken down by agency. The stacked bar chart reveals the construction patterns over time, with each color representing a different state agency.</p>
+        
+        <h3>Design Choices</h3>
+        <ul>
+          <li>Bar chart format effectively displays quantity comparisons across time periods</li>
+          <li>X-axis (Decades) shows temporal progression from 1800s to present</li>
+          <li>Y-axis (Building Count) represents the volume of construction</li>
+          <li>Color scheme distinguishes between different agencies</li>
+          <li>Interactive legend allows filtering by agency</li>
+        </ul>
+
+        <h3>Data Transformations</h3>
+        <ul>
+          <li>Converted construction years to decades for better temporal grouping</li>
+          <li>Aggregated building counts by decade and agency</li>
+          <li>Removed invalid records (pre-1800 construction dates)</li>
+          <li>Cleaned missing values from key fields</li>
+        </ul>
+
+        <h3>Interactivity Features</h3>
+        <p>The visualization includes legend-based filtering where users can click on agency names to show/hide their data. This helps manage the complexity of multiple agencies by allowing focused analysis of specific organizations.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="visualization-section">
+    <div class="container">
+      <h2>Building Size vs Count Relationship</h2>
+      <div id="vis-2" class="visualization-container"></div>
+      <div class="analysis-content">
+        <h3>Visualization Description</h3>
+        <p>This scatter plot explores the relationship between total square footage and number of buildings for each state agency, revealing different approaches to managing building portfolios.</p>
+        
+        <h3>Design Choices</h3>
+        <ul>
+          <li>Scatter plot with logarithmic scales accommodates wide value ranges</li>
+          <li>Circle size represents total square footage, emphasizing scale differences</li>
+          <li>Color distinguishes agencies while maintaining readability</li>
+          <li>Interactive tooltips provide precise values on hover</li>
+        </ul>
+
+        <h3>Data Transformations</h3>
+        <ul>
+          <li>Aggregated total square footage and building counts by agency</li>
+          <li>Applied logarithmic transformation to handle large value ranges</li>
+          <li>Formatted tooltips for better readability of large numbers</li>
+          <li>Optimized circle sizes for clear visualization</li>
+        </ul>
+
+        <h3>Key Insights</h3>
+        <p>The visualization reveals distinct patterns in how different agencies manage their building portfolios, with some favoring fewer, larger buildings while others maintain numerous smaller facilities.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<style>
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 4rem 2rem;
+  background-color: white;
+  margin-bottom: 2rem;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+.hero .lead {
+  font-size: 1.25rem;
+  color: #6c757d;
+  margin-bottom: 2rem;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  margin: 0.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  color: white;
+  text-decoration: none;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #545b62;
+  color: white;
+  text-decoration: none;
+}
+
+/* Visualization Sections */
+.visualization-section {
+  padding: 2rem 0;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.visualization-container {
+  width: 80%;
+  height: 500px;
+  margin: 2rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Analysis Content */
+.analysis-content {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  text-align: left;
+}
+
+.analysis-content h3 {
+  color: #2c3e50;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.analysis-content p {
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.analysis-content ul {
+  list-style-type: disc;
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+  color: #444;
+}
+
+.analysis-content li {
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+  
+  .visualization-container {
+    width: 95%;
+    height: 400px;
+  }
+
+  .analysis-content {
+    padding: 1rem;
+    margin: 1rem;
+  }
+}
+</style>
+
+<!-- Load Vega & Vega-Lite -->
+<script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@4.17.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Load first visualization
+  vegaEmbed('#vis-1', '/assets/figures/decade_chart.json', {
+    actions: false,
+    theme: 'light'
+  }).catch(function(error) {
+    console.error('Error loading first visualization:', error);
+    document.getElementById('vis-1').innerHTML = 
+      '<p style="color: red;">Error loading visualization. Please check console for details.</p>';
+  });
+
+  // Load second visualization
+  vegaEmbed('#vis-2', '/assets/figures/size_count_scatter.json', {
+    actions: false,
+    theme: 'light'
+  }).catch(function(error) {
+    console.error('Error loading second visualization:', error);
+    document.getElementById('vis-2').innerHTML = 
+      '<p style="color: red;">Error loading visualization. Please check console for details.</p>';
+  });
+});
+</script>
